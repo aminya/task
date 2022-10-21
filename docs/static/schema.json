@@ -116,6 +116,13 @@
             "description": "A set of environment variables that will be made available to shell commands.",
             "$ref": "#/definitions/3/env"
           },
+          "dotenv": {
+            "description": "A list of `.env` file paths to be parsed.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "silent": {
             "description": "Hides task name and command from output. The command's output will still be redirected to `STDOUT` and `STDERR`. When combined with the `--list` flag, task descriptions will be hidden.",
             "type": "boolean",
@@ -134,7 +141,7 @@
           "method": {
             "description": "Defines which method is used to check the task is up-to-date. `timestamp` will compare the timestamp of the sources and generates files. `checksum` will check the checksum (You probably want to ignore the .task folder in your .gitignore file). `none` skips any validation and always run the task.",
             "type": "string",
-            "enum": ["none", "checksum", "timestamp"],
+            "enum": [ "none", "checksum", "timestamp" ],
             "default": "none"
           },
           "prefix": {
@@ -176,7 +183,7 @@
           "^.*$": {
             "anyOf": [
               {
-                "type": ["boolean", "integer", "null", "number", "string"]
+                "type": [ "boolean", "integer", "null", "number", "string" ]
               },
               {
                 "$ref": "#/definitions/3/dynamic_var"
@@ -229,7 +236,7 @@
           }
         },
         "additionalProperties": false,
-        "required": ["cmd"]
+        "required": [ "cmd" ]
       },
       "precondition": {
         "anyOf": [
@@ -256,7 +263,7 @@
       },
       "run": {
         "type": "string",
-        "enum": ["always", "once", "when_changed"]
+        "enum": [ "always", "once", "when_changed" ]
       }
     }
   },
@@ -269,24 +276,24 @@
           "anyOf": [
             {
               "type": "number",
-              "enum": [3]
+              "enum": [ 3 ]
             },
             {
               "type": "string",
-              "enum": ["3"]
+              "enum": [ "3" ]
             }
           ]
         },
         "output": {
           "description": "Defines how the STDOUT and STDERR are printed when running tasks in parallel. The interleaved output prints lines in real time (default). The group output will print the entire output of a command once, after it finishes, so you won't have live feedback for commands that take a long time to run. The prefix output will prefix every line printed by a command with [task-name] as the prefix, but you can customize the prefix for a command with the prefix: attribute.",
           "type": "string",
-          "enum": ["interleaved", "group", "prefixed"],
+          "enum": [ "interleaved", "group", "prefixed" ],
           "default": "interleaved"
         },
         "method": {
           "description": "Defines which method is used to check the task is up-to-date. (default: checksum)",
           "type": "string",
-          "enum": ["none", "checksum", "timestamp"],
+          "enum": [ "none", "checksum", "timestamp" ],
           "default": "checksum"
         },
         "includes": {
@@ -367,16 +374,16 @@
         }
       },
       "additionalProperties": false,
-      "required": ["version"],
+      "required": [ "version" ],
       "anyOf": [
         {
-          "required": ["includes"]
+          "required": [ "includes" ]
         },
         {
-          "required": ["tasks"]
+          "required": [ "tasks" ]
         },
         {
-          "required": ["includes", "tasks"]
+          "required": [ "includes", "tasks" ]
         }
       ]
     }

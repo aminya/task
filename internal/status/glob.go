@@ -4,7 +4,7 @@ import (
 	"os"
 	"sort"
 
-	"github.com/mattn/go-zglob"
+	"github.com/goreleaser/fileglob"
 
 	"github.com/go-task/task/v3/internal/execext"
 	"github.com/go-task/task/v3/internal/filepathext"
@@ -32,7 +32,7 @@ func Glob(dir string, g string) ([]string, error) {
 		return nil, err
 	}
 
-	fs, err := zglob.GlobFollowSymlinks(g)
+	fs, err := fileglob.Glob(g)
 	if err != nil {
 		return nil, err
 	}

@@ -17,6 +17,8 @@ import (
 	"github.com/go-task/task/v3/args"
 	"github.com/go-task/task/v3/internal/logger"
 	"github.com/go-task/task/v3/taskfile"
+
+	"github.com/pkg/profile"
 )
 
 var (
@@ -46,6 +48,8 @@ Options:
 `
 
 func main() {
+	defer profile.Start().Stop()
+
 	log.SetFlags(0)
 	log.SetOutput(os.Stderr)
 
